@@ -78,16 +78,16 @@ CREATE TABLE IF NOT EXISTS tacgia(
 	PRIMARY KEY (matacgia)
 );
 
-CREATE TABLE IF NOT EXISTS tacgia_sach(
-	matacgia varchar(20),
+CREATE TABLE IF NOT EXISTS sach_tacgia(
 	masach varchar(20),
+	matacgia varchar(20),
 	vaitro varchar(20),
 	vitri varchar(20),
-	PRIMARY KEY (matacgia, masach),
-	CONSTRAINT PK_matacgia_tacgia_tacgia_sach
-	FOREIGN KEY (matacgia) REFERENCES tacgia(matacgia),
-	CONSTRAINT PK_masach_sach_tacgia_sach
-	FOREIGN KEY (masach) REFERENCES sach(masach)
+	PRIMARY KEY (masach, matacgia),
+	CONSTRAINT PK_masach_sach_sach_tacgia
+	FOREIGN KEY (masach) REFERENCES sach(masach),
+	CONSTRAINT PK_matacgia_tacgia_sach_tacgia
+	FOREIGN KEY (matacgia) REFERENCES tacgia(matacgia)
 );
 
 CREATE TABLE IF NOT EXISTS nhaxuatban(
@@ -98,10 +98,10 @@ CREATE TABLE IF NOT EXISTS nhaxuatban(
 	PRIMARY KEY (mansx)
 );
 
-ALTER TABLE nhaxuatban 
-ADD masach varchar(20),
-ADD CONSTRAINT PK_masach_sach_nhaxuatban
-FOREIGN KEY (masach) REFERENCES sach(masach);
+ALTER TABLE sach
+ADD mansx varchar(20),
+ADD CONSTRAINT PK_mansx_nhaxuatban_sach
+FOREIGN KEY (mansx) REFERENCES nhaxuatban(mansx);
 
 
 
