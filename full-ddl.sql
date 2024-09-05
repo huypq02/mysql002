@@ -30,7 +30,7 @@ ADD PRIMARY KEY donhang(madonhang);
 
 ALTER TABLE donhang 
 ADD makh varchar(20),
-ADD CONSTRAINT PK_makh_khachhang_donhang
+ADD CONSTRAINT FK_makh_khachhang_donhang
 FOREIGN KEY (makh) REFERENCES khachhang(makh);
 
 CREATE TABLE IF NOT EXISTS sach(
@@ -50,9 +50,9 @@ CREATE TABLE IF NOT EXISTS donhang_sach(
 	soluong int,
 	dongia DECIMAL(19,2),
 	PRIMARY KEY (madonhang, masach),
-	CONSTRAINT PK_madonhang_donhang_donhang_sach
+	CONSTRAINT FK_madonhang_donhang_donhang_sach
 	FOREIGN KEY (madonhang) REFERENCES donhang(madonhang),
-	CONSTRAINT PK_masach_sach_donhang_sach
+	CONSTRAINT FK_masach_sach_donhang_sach
 	FOREIGN KEY (masach) REFERENCES sach(masach)
 );
 
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS chude(
 
 ALTER TABLE sach 
 ADD machude varchar(20),
-ADD CONSTRAINT PK_machude_chude_sach
+ADD CONSTRAINT FK_machude_chude_sach
 FOREIGN KEY (machude) REFERENCES chude(machude);
 
 
@@ -84,9 +84,9 @@ CREATE TABLE IF NOT EXISTS sach_tacgia(
 	vaitro varchar(20),
 	vitri varchar(20),
 	PRIMARY KEY (masach, matacgia),
-	CONSTRAINT PK_masach_sach_sach_tacgia
+	CONSTRAINT FK_masach_sach_sach_tacgia
 	FOREIGN KEY (masach) REFERENCES sach(masach),
-	CONSTRAINT PK_matacgia_tacgia_sach_tacgia
+	CONSTRAINT FK_matacgia_tacgia_sach_tacgia
 	FOREIGN KEY (matacgia) REFERENCES tacgia(matacgia)
 );
 
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS nhaxuatban(
 
 ALTER TABLE sach
 ADD mansx varchar(20),
-ADD CONSTRAINT PK_mansx_nhaxuatban_sach
+ADD CONSTRAINT FK_mansx_nhaxuatban_sach
 FOREIGN KEY (mansx) REFERENCES nhaxuatban(mansx);
 
 
